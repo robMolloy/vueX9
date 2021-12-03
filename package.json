@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "vuex": "^3.6.2"
+    "vuex": "^4.0.1"
   },
   "type": "module"
 }

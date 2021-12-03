@@ -1,3 +1,4 @@
+import { useStore } from "vuex";
 
 const useNameSpacedStore = (storeName) => {
   const store = useStore();

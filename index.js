@@ -1,6 +1,6 @@
 import { useStore } from 'vuex';
 
-const useNameSpacedStore = (storeName) => {
+export const useNameSpacedStore = (storeName) => {
   const store = useStore();
 
   return {
@@ -10,5 +10,3 @@ const useNameSpacedStore = (storeName) => {
     commit: (name, payload) => store.commit(`${storeName}/${name}`, payload),
   };
 };
-
-module.exports = {useNameSpacedStore}

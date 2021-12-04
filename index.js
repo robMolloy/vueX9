@@ -9,25 +9,25 @@ export const useNameSpacedStore = (storeName) => {
       const names = Array.isArray(name) ? name : [name]
       const states = {}
       names.forEach((x)=> states[x] = store.states[`${storeName}/${x}`])
-      return Array.isArray(name) ? states : states[name]
+      return states
     },
     getters: (name) => {
       const names = Array.isArray(name) ? name : [name]
       const getters = {}
       names.forEach((x)=> getters[x] = computed(() => store.getters[`${storeName}/${x}`]))
-      return Array.isArray(name) ? getters : getters[name]
+      return getters
     },
     dispatch: (name) => {
       const names = Array.isArray(name) ? name : [name]
       const dispatches = {}
       names.forEach((x)=> dispatches[x] = store.dispatch.bind(this, `${storeName}/${x}`))
-      return Array.isArray(name) ? dispatches : dispatches[name]
+      return dispatches
     },
     commit: (name) => {
       const names = Array.isArray(name) ? name : [name]
       const commits = {}
       names.forEach((x)=> commits[x] = store.commit.bind(this, `${storeName}/${x}`))
-      return Array.isArray(name) ? commits : commits[name]
+      return commits
     },
     // commit: (name, payload) => store.commit(`${storeName}/${name}`, payload),
   };

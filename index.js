@@ -1,9 +1,7 @@
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 
-export const useNameSpacedStore = (storeName) => {
-  const store = useStore();
-
+export const namespaceifyStore = (store, storeName) => {
   return {
     state: (name) => {
       const names = Array.isArray(name) ? name : [name]
@@ -31,4 +29,10 @@ export const useNameSpacedStore = (storeName) => {
     },
     // commit: (name, payload) => store.commit(`${storeName}/${name}`, payload),
   };
+};
+
+export const useNamespacedStore = (storeName) => {
+  const store = useStore();
+
+  return namespaceifyStore(store, storeName)
 };

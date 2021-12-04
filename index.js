@@ -23,12 +23,12 @@ export const useNameSpacedStore = (storeName) => {
       names.forEach((x)=> dispatches[x] = store.dispatch.bind(this, `${storeName}/${x}`))
       return Array.isArray(name) ? dispatches : dispatches[name]
     },
-    // commit: (name, payload) => {
-    //   const names = Array.isArray(name) ? name : [name]
-    //   const commits = {}
-    //   names.forEach((x)=> commits[x] = store.commit.bind(this, `${storeName}/${x}`))
-    //   return Array.isArray(name) ? commits : commits[name]
-    // },
-    commit: (name, payload) => store.commit(`${storeName}/${name}`, payload),
+    commit: (name) => {
+      const names = Array.isArray(name) ? name : [name]
+      const commits = {}
+      names.forEach((x)=> commits[x] = store.commit.bind(this, `${storeName}/${x}`))
+      return Array.isArray(name) ? commits : commits[name]
+    },
+    // commit: (name, payload) => store.commit(`${storeName}/${name}`, payload),
   };
 };

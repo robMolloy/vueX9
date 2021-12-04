@@ -14,7 +14,7 @@ export const useNameSpacedStore = (storeName) => {
     getters: (name) => {
       const names = Array.isArray(name) ? name : [name]
       const getters = {}
-      names.forEach((x)=> computed(() => getters[x] = store.getters[`${storeName}/${x}`]))
+      names.forEach((x)=> getters[x] = computed(() => store.getters[`${storeName}/${x}`]))
       return Array.isArray(name) ? getters : getters[name]
     },
     dispatch: (name) => {
